@@ -1,0 +1,10 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@foreach (var warzywo in ViewBag.Produkty)
+{
+    <h2>@warzywo.Name</h2>
+    <b>@warzywo.Price zł</b>
+}
