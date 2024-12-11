@@ -2,9 +2,12 @@
     ViewData["Title"] = "Home Page";
 }
 
+<a asp-controller="Home" asp-action="Edit" asp-route-id="0">Dodaj produkt</a>
 
 @foreach (var warzywo in ViewBag.Produkty)
 {
     <h2>@warzywo.Name</h2>
-    <b>@warzywo.Price zł</b>
+    <b>@warzywo.Price zł</b> <i> Ilość: @warzywo.Quantity </i>
+    <a asp-controller="Home" asp-action="Edit" asp-route-id="@warzywo.Id">Edycja</a>
+    <a asp-controller="Home" asp-action="Delete" asp-route-id="@warzywo.Id">Usuń</a>
 }

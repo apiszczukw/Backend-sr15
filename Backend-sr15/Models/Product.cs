@@ -1,5 +1,6 @@
 ﻿
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Backend_sr15.Models
@@ -21,5 +22,8 @@ namespace Backend_sr15.Models
         public string Name { get; set; }
 
         public double? Price { get; set; }
+
+        [DefaultValue(10)]
+        public int Quantity { get; set; }
     }
 }

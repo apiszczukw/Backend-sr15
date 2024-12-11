@@ -1,0 +1,14 @@
+﻿@model Product
+
+
+<form asp-action="Index" method="post">
+	<input type="hidden" asp-for=Id />
+	<label> Nazwa produktu: </label>
+	<input asp-for=Name type="text"/>
+	<label> Cena: </label>
+	<input asp-for=Price type="text" />
+	<label> Ilość: </label>
+	<input asp-for=Quantity type="number" />
+
+	<button type="submit">Zapisz</button>
+</form>

@@ -18,6 +18,7 @@ ShopContext db)
 			this.db = db;
 		}
 
+		[HttpGet]
 		public IActionResult Index()
 		{
 			var produkty = db.Products.ToList();
@@ -25,6 +26,57 @@ ShopContext db)
 			ViewBag.Produkty = produkty;
 
 			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Index(Product product) 
+		{
+			if(product.Id == 0)
+			{
+				db.Products.Add(product);
+			}
+			else
+			{
+				db.Products.Update(product);
+			}
+
+			db.SaveChanges();
+
+			var produkty = db.Products.ToList();
+
+			ViewBag.Produkty = produkty;
+
+			return View();
+		}
+
+		public IActionResult Edit(int id)
+		{
+			var produkt = new Product();
+
+			if(id > 0)
+			{
+				produkt = db.Products.Find(id);
+			}
+
+			return View(produkt);
+		}
+
+		public IActionResult Delete(int id)
+		{
+			var produkt = db.Products.Find(id);
+
+			if(produkt != null)
+			{
+				db.Products.Remove(produkt);
+			}
+
+			db.SaveChanges();
+
+			var produkty = db.Products.ToList();
+
+			ViewBag.Produkty = produkty;
+
+			return View("Index");
 		}
 
 		public IActionResult Privacy()
